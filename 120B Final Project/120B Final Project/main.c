@@ -157,6 +157,22 @@ int Tick_Settings(int Setting_State)
 
     unsigned char Contrast_Read = 0;
 
+    char Setting_UD_ADC[4] = "";
+    char Setting_UD_ADC_Dis[32] = "Saved: ";
+
+    char Setting_NewUD_ADC[4] = "";
+    char Setting_NewUD_ADC_Dis[32] = "Saved: ";
+
+    unsigned char UD_ADC_Read = 0;
+
+    char Setting_LR_ADC[4] = "";
+    char Setting_LR_ADC_Dis[32] = "Saved: ";
+
+    char Setting_NewLR_ADC[4] = "";
+    char Setting_NewLR_ADC_Dis[32] = "Saved: ";
+
+    unsigned char LR_ADC_Read = 0;
+
     //Actions
     switch(Setting_State)
     {
@@ -225,6 +241,35 @@ int Tick_Settings(int Setting_State)
         break;
 
         case Setting_UDSET:
+        LCD_ClearScreen();
+        UD_ADC_Read = eeprom_read_byte(&UD_ADC_MAX_EE);
+        
+        itoa(UD_ADC_Read, Setting_UD_ADC, 10);
+        strcat(Setting_Contrast_Dis, Setting_Contrast);
+
+        strcat(Setting_Contrast_Dis, " ");
+
+        if(Button1 && (Contrast < 100))
+        {
+            Contrast += 10;
+        }
+
+        if(Button2 && (Contrast > 10))
+        {
+            Contrast -= 10;
+        }
+        LcdContrast(Contrast);
+
+        itoa(Contrast, Setting_NewContrast, 10);
+        strcat(Setting_Contrast_Dis, Setting_NewContrast_Dis);
+        strcat(Setting_Contrast_Dis, Setting_NewContrast);
+
+        LCD_DisplayString(1, Setting_Contrast_Dis);
+        
+        if(Button3)
+        {
+            eeprom_update_byte((uint8_t*) &Contrast_EE, Contrast);
+        }
         break;
 
         case Setting_RLSET:
@@ -288,9 +333,17 @@ int Tick_Settings(int Setting_State)
         break;
 
         case Setting_UDSET:
+        if (Button3)
+        {
+            Setting_State = Setting_Saved;
+        }
         break;
 
         case Setting_RLSET:
+        if (Button3)
+        {
+            Setting_State = Setting_Saved;
+        }
         break;
 
         case Setting_RetSet:
@@ -564,13 +617,7 @@ int main(void)
         LeftRightRAW = adc_read(0);
         LeftRight = ADC_Scaler(LR_ADC_MAX, LeftRightRAW, 3);
 
-        //UpDown is inverted physically for my project (UD is LR for schematics, due to board orientation)
-        UpDownRAW =  UD_ADC_MAX * (1.0 - ((double)adc_read(1)/(double)UD_ADC_MAX));
-        //Inverting can give neg values?
-        if (UpDownRAW < 0)
-        {
-            UpDownRAW = 1;
-        }
+        UpDownRAW =  adc_read(1);
         UpDown = ADC_Scaler(UD_ADC_MAX, UpDownRAW, 3);
 
         //if (Count == 1000)
