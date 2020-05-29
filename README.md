@@ -5,7 +5,7 @@ Final Project for UCR CS120B Embedded Systems
 -Using specific programing practices for embeded systems (State Machines).
 
 This project is simulating the childhood board game, Etch 'n Sketch. 
-The components used for this project include: a joystick, a 16x2 LED screen, a Nokia LCD screen, and a ATmega1284.
+The components used for this project include: a joystick, a 16x2 LED screen, a Nokia LCD screen, and an ATmega1284.
 
 This project uses custom programming for the LED screen, LCD splash screens, and joystick.
 
