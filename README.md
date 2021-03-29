@@ -12,3 +12,5 @@ This project uses custom programming for the LED screen, LCD splash screens, and
 Final Report: https://goo.gl/4g12rC
 
 Video Demonstration: youtu.be/aEEVnwL83GI
+
+![alt text](https://github.com/Calvin315/Etch-N-Sketch/blob/master/EtchNSketch.png)
