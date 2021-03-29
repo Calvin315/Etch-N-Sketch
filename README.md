@@ -1,5 +1,6 @@
 # UCR-CS120B-Final-Project
 Final Project for UCR CS120B Embedded Systems
+
 -Designing and developing a project based on the concepts learned in class. 
 
 -Researching documentation for the implementation of specific components.
@@ -11,4 +12,5 @@ This project is simulating the childhood board game, Etch 'n Sketch. The compone
 This project uses custom programming for the LED screen, LCD splash screens, and joystick.
 
 Final Report: https://goo.gl/4g12rC
+
 Video Demonstration: youtu.be/aEEVnwL83GI
