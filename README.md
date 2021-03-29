@@ -13,4 +13,4 @@ Final Report: https://goo.gl/4g12rC
 
 Video Demonstration: youtu.be/aEEVnwL83GI
 
-![alt text](https://github.com/Calvin315/Etch-N-Sketch/blob/master/EtchNSketch.png)
+![alt text](https://github.com/Calvin315/Etch-N-Sketch/blob/master/EtchNSketch.jpg)
